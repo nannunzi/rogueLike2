@@ -47,8 +47,8 @@ import java.util.Random;//i hate this thing
                rngint= (int)rngprep;
                int w = rngint;
                rngprep=rng.nextDouble();
-               rngprep=rngprep*50
-               rngint= (int)rngprep
+               rngprep=rngprep*50;
+               rngint= (int)rngprep;
                int v = rngint;
                rngprep=rng.nextDouble();
                rngprep=rngprep*15;

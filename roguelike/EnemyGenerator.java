@@ -2,9 +2,9 @@
 import java.util.Random;
 public class EnemyGenerator{
          private static String[] descriptor =new String[]{"Poor","Old","Mystic","Repulsive","Dazzling","Twisted","Elder","Sluggish","Stinky","Weird"};
-         private static EnemyType[] types = new EnemyType[]{EnemyType.Bruiser, ItemType.Theif, ItemType.Undead};
+         private static EnemyType[] types = new EnemyType[]{EnemyType.Bruiser, EnemyType.Theif, EnemyType.Undead};
 
-        public static Enemy generate(){
+        public static Enemy generate(int ro, int col){
 		int hp=0;
 		int dam=0;
 		int prot = 0; 
@@ -35,8 +35,9 @@ public class EnemyGenerator{
                 case 2: name += " Pirate";
 				hp = 50;
 				dam = 10;
-				prot = 2
+				prot = 2;
                			  break;
+}
                 EnemyType type = types[rngint];
                 switch (rngint){
                         case 0: name += " Bruiser";
@@ -52,14 +53,8 @@ public class EnemyGenerator{
 				dam=dam*2;
 				break;
                         }
-               rngprep=rng.nextDouble();
-               rngprep=rngprep*200;
-               rngint= (int)rngprep;
-               int r = rngint;
-		rngprep = rng.nxtDouble();
-		rngprep=rngprep*500;
-		rngint=(int)rngprep;
-		int c = rngint;
+                int r = ro;
+		int c = col;
                return new Enemy(name, r,c, hp, dam, prot);
        }
 }
