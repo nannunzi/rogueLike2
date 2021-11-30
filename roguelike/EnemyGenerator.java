@@ -54,7 +54,7 @@ public class EnemyGenerator{
 				dam=dam*2;
 				break;
                         }
-                int r = ro;
+                int r = row;
 		int c = col;
                return new Enemy(name, r,c, hp, dam, prot);
        }
