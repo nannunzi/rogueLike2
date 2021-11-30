@@ -56,5 +56,5 @@ import java.util.Random;//i hate this thing
                int s = rngint;
                 return new Item(type, name, w, v, s);
         }
->>>>>>> b9a35e35ba817b8a58aa2012be378f4345610b55
+
 }
