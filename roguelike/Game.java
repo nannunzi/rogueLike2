@@ -20,9 +20,10 @@ public class Game {
         boxes = room.getBoxes();
         enemies = room.getEnemies();
     }
-    public Game(String sav){
-	
-}
+    public Game(String sav)throws FileNotFoundException{
+		Scanner read = new Scaner(new FileReader(sav));
+		
+    }
 
     // prints a help menu to the left of the map
     private void showHelp() {
