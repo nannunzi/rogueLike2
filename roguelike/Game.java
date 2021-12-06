@@ -4,24 +4,24 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.PrintWriter
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import ansi_terminal.*;
 
 public class Game {
-    private Room room;
+    private World world;
     private Player player;
     private ArrayList<Box> boxes;
     private ArrayList<Enemy> enemies;
 
     public Game() {
-        room = new Room();
+        world  = new World();
         player = new Player(room.getPlayerStart());
-        boxes = room.getBoxes();
-        enemies = room.getEnemies();
+        boxes = world.getCurrentRoom.getBoxes();
+        enemies = world.getCurrentRoom.getEnemies();
     }
     public Game(String sav)throws FileNotFoundException{
-		Scanner read = new Scaner(new FileReader(sav));
+		Scanner read = new Scanner(new FileReader(sav));
 		
     }
 

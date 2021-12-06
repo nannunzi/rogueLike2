@@ -1,5 +1,5 @@
 public enum EnemyType{
 	Bruiser,
-	Theif,
+	Thief,
 	Undead
 }
