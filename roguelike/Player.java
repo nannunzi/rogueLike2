@@ -54,7 +54,10 @@ public class Player extends Character {
             return 0;
         }
     }
-
+/**
+This method restores the save of the Inventory from the save file.
+@return the Inventory the user had at the time of the save
+*/
     public Inventory getInventory() {
         return items;
     }
