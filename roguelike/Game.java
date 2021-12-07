@@ -96,6 +96,9 @@ public class Game {
             Terminal.pause(1.25);
         }
     }
+/**
+This will warp the user to another toom when they are standing on a portal
+*/
     private void warp() {
         Portal thing = checkForPortal();
         if (thing == null) {
@@ -126,6 +129,10 @@ public class Game {
             Terminal.pause(1.25);
         }   
     }
+/**
+This saves the game that the user has currently started, saving various locations of objects on the map.
+@throws IOException if the input to the file fails
+*/
 	public void save()throws IOException
 	{
 	String fileName= this.player.getName()+".sav";
@@ -207,6 +214,10 @@ public class Game {
 
         return null;
     }
+/**
+Checks to see if the player is on a portal, if so the process of warping them to another room begins.
+@return the portal that the user is standing on
+*/
     private Portal checkForPortal() {
         Position playerLocation = player.getPosition();
 

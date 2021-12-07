@@ -63,6 +63,10 @@ public class Room {
 	s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine()
 };
 }
+/**
+Saves the current state of the room that the user is in when they decide to save.
+@param w a PrintWriter which reads the status of the room into a file to be restored later
+*/
 	public void save(PrintWriter w){
 		for (int i = 0; i<grid.length; i++){
 		w.println(this.grid[i]);		
@@ -110,6 +114,10 @@ public class Room {
 
         return enemies;
     }
+/**
+Returns a set of portals from the map, since each room is different the coordinates will be unique.
+@return the list of portals that are avaialble on the map
+*/
 public ArrayList<Portal> getPortal() {
         ArrayList<Portal> port=new ArrayList<Portal>();
          for (int row = 0; row < rows; row++) {
