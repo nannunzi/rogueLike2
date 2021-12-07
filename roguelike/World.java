@@ -24,7 +24,7 @@ public void setCurrentRoom(int i){
 }
 public void save(PrintWriter p){
 	p.println(rooms.size());
-	p.println(currentRoomIndex));
+	p.println(currentRoomIndex);
 	for(Room r : rooms){
 		r.save(p);
 	}
