@@ -70,6 +70,10 @@ public class Item {
     public String toString() {
         return name + " " + weight + " " + value + " " + strength;
     }
+/**
+This method will save them items on the map currently to a file where it will be restored later.
+@param w is a PrintWriter which will read the items into the file
+*/
     public void save(PrintWriter w){
 	if(this.type==ItemType.Weapon){ 
 			w.println("w");
