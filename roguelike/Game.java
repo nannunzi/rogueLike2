@@ -17,11 +17,13 @@ public class Game {
     private ArrayList<Portal> portal;
 
     public Game() {
+	Terminal.cookedMode();
         world  = new World();
 	player = new Player(world.getCurrentRoom().getPlayerStart());
         boxes = world.getCurrentRoom().getBoxes();
         enemies = world.getCurrentRoom().getEnemies();
 	portal= world.getCurrentRoom().getPortal();
+	Terminal.rawMode();
     }
     public Game(String sav)throws FileNotFoundException{
 		Scanner read = new Scanner(new FileReader(sav));
@@ -99,7 +101,8 @@ public class Game {
             setStatus("No portal here");
             Terminal.pause(1.25);
         } else {
-             	int whoop=0; 
+             	int whoop=0;
+		Terminal.cookedMode(); 
 		Scanner useless=new Scanner(System.in);
 		while(!(whoop==1||whoop==2||whoop==3))
 		{
@@ -116,7 +119,9 @@ public class Game {
 			else{
 			setStatus("invalid room");
 			}
-                }  
+		
+                }
+		Terminal.rawMode();  
             Terminal.pause(1.25);
         }   
     }
@@ -152,7 +157,9 @@ public class Game {
 	    
 	    case s:
 		try{ 
-		save();}catch(IOException e){
+		save();
+		return false;
+		}catch(IOException e){
 		System.out.println("couldnt save. looks like youre on your own.");}
 		break;
 
@@ -239,6 +246,9 @@ public class Game {
             for (Enemy enemy : enemies) {
                 enemy.draw();
             }
+	    for (Portal portal : portal){
+		portal.draw();
+	    }
             player.draw();
 
             // read a key from the user
