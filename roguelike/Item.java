@@ -2,6 +2,7 @@
 // this class represents a single item, it could be an equippable
 // thing like weapon or ring, or something generic
 import java.io.PrintWriter;
+import java.util.Scanner;
 public class Item {
     // what sort of item it is
     private ItemType type;
@@ -28,7 +29,7 @@ public class Item {
         this.strength = strength;
     }
 	public Item(Scanner s){
-		Scanner s= new Scanner(System.in);
+
 		String see = s.nextLine();
 		if (see.equals("w")){
 			type = ItemType.Weapon;

@@ -26,10 +26,10 @@ public class Inventory {
 	this.maxWeight = Integer.parseInt(s.nextLine());
 	int count = Integer.parseInt(s.nextLine());
 	count-=2;
-	items.addAndEquip(new Item(s));
-	items.addAndEqiup(new Item(s));
-	for(int i; i<count; i++){
-	items.put(new Item(s));
+	this.addAndEquip(new Item(s));
+	this.addAndEquip(new Item(s));
+	for(int i=0; i<count; i++){
+	items.add(new Item(s));
         }
 	
 	

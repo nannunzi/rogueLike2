@@ -61,7 +61,7 @@ public class Player extends Character {
 
 	public void save(PrintWriter w){
 	w.println(this.name);
-	w.println(this.health);
+	w.println(this.getHealth());
 	this.items.save(w);
 }
 }

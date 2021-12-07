@@ -2,9 +2,10 @@
 // contains the main class for running the game
 import java.util.Scanner;
 import ansi_terminal.*;
-
+import java.io.FileNotFoundException;
 public class Main {
     public static void main(String args[]) {
+	Game game=null;
         System.out.println("would you like to play from a (s)ave or start a(n)ew?");
 	Scanner save = new Scanner(System.in);
 	String choos="";
@@ -16,14 +17,14 @@ public class Main {
 	System.out.println("what is the file name?(please include the .sav)");
 	try {
 	String filename=save.nextLine();
-	Game game = new Game(filename);
-}catch (fileNotFoundException e){
+	game = new Game(filename);
+}catch (FileNotFoundException e){
 	System.out.println("file not found. lets try a new file");
-	Game game = new Game();
+	game = new Game();
 }
 }
 	else{
-	Game game = new Game();
+	game = new Game();
 }
 	// put termain in raw mode
         Terminal.rawMode();
