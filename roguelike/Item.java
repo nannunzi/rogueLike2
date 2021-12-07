@@ -27,6 +27,22 @@ public class Item {
         this.value = value;
         this.strength = strength;
     }
+	public Item(Scanner s){
+		String see = s.nextLine();
+		if see.equals("w"){
+			type = ItemType.Weapon;
+			}
+		else if (see.equals("a")){
+			type = ItemType.Armor;
+			}
+		else{
+			type=ItemType.Other;
+			}
+		this.name=s.nextLine();
+		this.weight=Integer.parseInt(s.nextLine());
+		this.value=Integer.parseInt(s.nextLine());
+		this.strength=Integer.parseInt(s.nextLine());
+}
 
     public int getWeight() {
         return weight;

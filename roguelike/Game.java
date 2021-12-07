@@ -27,7 +27,8 @@ public class Game {
     }
     public Game(String sav)throws FileNotFoundException{
 		Scanner read = new Scanner(new FileReader(sav));
-				
+		world = new World(read);
+		player = new player 	
     }
 
     // prints a help menu to the left of the map
@@ -125,8 +126,10 @@ public class Game {
             Terminal.pause(1.25);
         }   
     }
-	public void save()throws IOException{
-	PrintWriter p = new PrintWriter(new FileWriter(this.player.getName()+".sav"));
+	public void save()throws IOException
+	{
+	String fileName= this.player.getName()+".sav";
+	PrintWriter p = new PrintWriter(new FileWriter(fileName));
 	world.save(p);
 }
 
@@ -158,8 +161,8 @@ public class Game {
 	    
 	    case s:
 		try{ 
-		save();
-		return false;
+		this.save();
+		
 		}catch(IOException e){
 		System.out.println("couldnt save. looks like youre on your own.");}
 		break;

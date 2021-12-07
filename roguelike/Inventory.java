@@ -21,6 +21,19 @@ public class Inventory {
         items = new ArrayList<Item>();
         this.maxWeight = maxWeight;
     }
+	public Inventory(Scanner s){
+	items= new ArrayList<Item>();
+	this.maxWeight = Integer.parseInt(s.nextLine());
+	int count = Integer.parseInt(s.nextLine());
+	count-=2;
+	items.addAndEquip(new Item(s));
+	items.addAndEqiup(new Item(s));
+	for(int i; i<count; i++){
+	items.put(new Item(s));
+        }
+	
+	
+}
 
     // returns true on success, false when full
     public boolean add(Item item) {
@@ -200,9 +213,13 @@ public class Inventory {
 	public void save(PrintWriter w)
 {
 	 w.println(this.maxWeight);
-		int f = 0;
+	 w.println(this.items.size());
+	 this.equippedWeapon.save(w);
+	 this.equippedArmor.save(w);
          for (Item i : items) {
-            i.save(w);                         
+	    if (i!=this.equippedWeapon&& i!=this.equippedArmor){
+            i.save(w);                   
+		}
          }
 }
 }

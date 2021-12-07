@@ -22,7 +22,12 @@ public class Player extends Character {
         items.addAndEquip(new Item(ItemType.Weapon, "Iron Dagger", 5, 12, 7));
         items.addAndEquip(new Item(ItemType.Armor, "Leather Armor", 15, 20, 3));
     }
-
+	public Player(Position start, Scanner s){
+	super(start.getRow(), start.getcol(), '@', Color.CYAN, 50);
+	this.name=s.nextLine();
+	super.setHealth(Integer.parseInt(s.nextLine()))
+	this.items=new Inventory(s);
+}
     @Override
     public int getDamage() {
         Item weapon = items.getEquippedWeapon();
@@ -56,6 +61,7 @@ public class Player extends Character {
 
 	public void save(PrintWriter w){
 	w.println(this.name);
+	w.println(this.health);
 	this.items.save(w);
 }
 }
