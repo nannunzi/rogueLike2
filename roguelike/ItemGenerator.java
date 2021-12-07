@@ -1,11 +1,18 @@
 import java.util.Random;//i hate this thing
  //Dear Dr. Finlayson, may God allow you to never see this because holy crap this is ugly and i am not proud
  //of it. If you do see this, I apologize to your eyes.
+/**
+A Item, which is placed around the map is generated with three ossible types, a name, material, and type of object
+@Author NickDanZack
+*/
  public class ItemGenerator{
          private static String[] descriptor =new String[]{"Poor","Rusted","Mystic","Fine","Dazzling","Warped","Elder","Antique","Good","Grand"};
          private static String[] materials =new String[]{"Wood","Iron","Steel","Scale","Stone","Bronze","Plastic","Titanium","Ketchup", "Tungsten"};
          private static ItemType[] types = new ItemType[]{ItemType.Weapon, ItemType.Armor, ItemType.Other};
- 
+/**
+This method generates a new Item with the Item being given a name, value, strength, mateial.
+@return returns a new Item with randomly generated attributes 
+*/ 
         public static Item generate(){
                 Random rng = new Random();
                 double rngprep= rng.nextDouble();
