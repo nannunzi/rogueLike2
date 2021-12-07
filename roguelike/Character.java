@@ -1,7 +1,7 @@
 // Character.java
 
 import java.util.ArrayList;
-
+import java.util.Random;
 import ansi_terminal.*;
 
 public abstract class Character extends Entity {
@@ -26,8 +26,11 @@ public abstract class Character extends Entity {
 
     // do damage to another player, returns if they died
     private boolean dealDamage(Character other, Room room) {
+	//newly added aspect of slight rng on damage
+	Random rng = new Random();
+	int modifier = rng.nextInt(10)-5;
         // this character does damage to the other character
-        int damageDone = getDamage() - other.getProtection();
+        int damageDone = getDamage()- modifier - other.getProtection();
 
         // prevent negative damage
         if (damageDone < 0) {
