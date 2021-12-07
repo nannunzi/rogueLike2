@@ -158,7 +158,10 @@ public class Game {
                 player.getInventory().equipArmor();
                 redrawMapAndHelp();
                 break;
-	    
+	    case e: 
+		warp();
+		redrawMapAndHelp();
+		break;
 	    case s:
 		try{ 
 		this.save();
