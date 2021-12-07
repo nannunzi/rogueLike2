@@ -1,5 +1,7 @@
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 public class World{
 	private ArrayList<Room> rooms;
@@ -9,11 +11,20 @@ public World()
 {
 	this.rooms = new ArrayList<Room>();
 	rooms.add(new Room());
+try{
+	rooms.add(new Room(new Scanner(new FileReader("Room2.txt"))));
+	rooms.add(new Room(new Scanner(new FileReader("Room3.txt"))));
+}catch(FileNotFoundException f){}
 	this.currentRoom=rooms.get(0);
 	this.currentRoomIndex=0;
 }
 public World(Scanner s){
-	int numRooms=Integer.parseInt(s.nextLine()); 
+	int numRooms=Integer.parseInt(s.nextLine());
+	currentRoomIndex=Integer.parseInt(s.nextLine()); 
+	for(int i = 0; i<numRooms; i++){
+		rooms.add(new Room(s));
+	}
+	setCurrentRoom(currentRoomIndex);
 }
 public Room getCurrentRoom(){
 return this.currentRoom;
