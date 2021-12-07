@@ -210,6 +210,9 @@ public class Inventory {
             return items.get(realIndex);
         }
     }
+/**
+This method will save the inventory of the player to a file where it will be restored later on or after quitting
+*/
 	public void save(PrintWriter w)
 {
 	 w.println(this.maxWeight);
