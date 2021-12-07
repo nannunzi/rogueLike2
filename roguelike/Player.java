@@ -13,7 +13,7 @@ public class Player extends Character {
  	 Scanner literallyjustthis= new Scanner(System.in);
          String namae = literallyjustthis.nextLine();
 	this.name = namae;
-         literallyjustthis.close();
+         
         // we can carry 100 pounds of items
         items = new Inventory(100);
 
