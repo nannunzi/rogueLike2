@@ -19,8 +19,8 @@ public class Player extends Character {
 
         // give them some basic stuff to start with
         // TODO make up your own starting equipment!
-        items.addAndEquip(new Item(ItemType.Weapon, "Iron Dagger", 5, 12, 7));
-        items.addAndEquip(new Item(ItemType.Armor, "Leather Armor", 15, 20, 3));
+        items.addAndEquip(new Item(ItemType.Weapon, "Fancy Pencil", 2, 20, 2));
+        items.addAndEquip(new Item(ItemType.Armor, "Embered Garb", 15, 40, 6));
     }
 	public Player(Position start, Scanner s){
 	super(start.getRow(), start.getcol(), '@', Color.CYAN, 50);
