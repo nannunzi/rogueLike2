@@ -158,9 +158,9 @@ public class Game {
                 player.getInventory().equipArmor();
                 redrawMapAndHelp();
                 break;
-	    case e: 
+	    case f: 
 		warp();
-		redrawMapAndHelp();
+		//redrawMapAndHelp();
 		break;
 	    case s:
 		try{ 
