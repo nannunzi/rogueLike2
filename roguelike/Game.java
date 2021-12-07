@@ -127,6 +127,7 @@ public class Game {
     }
 	public void save()throws IOException{
 	PrintWriter p = new PrintWriter(new FileWriter(this.player.getName()+".sav"));
+	world.save(p);
 }
 
     // handle the key which was read - return false if we quit the game

@@ -199,7 +199,11 @@ public class Inventory {
     }
 	public void save(PrintWriter w)
 {
-	
+	 w.println(this.maxWeight);
+		int f = 0;
+         for (Item i : items) {
+            i.save(w);                         
+         }
 }
 }
 
