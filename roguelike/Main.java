@@ -12,7 +12,7 @@ public class Main {
 	choos=save.nextLine();
 	System.out.println("Invalid answer");
 }
-	if choos.equalsIgnoreCase("s"){
+	if (choos.equalsIgnoreCase("s")){
 	System.out.println("what is the file name?(please include the .sav)");
 	try {
 	String filename=save.nextLine();
@@ -20,6 +20,7 @@ public class Main {
 }catch (fileNotFoundException e){
 	System.out.println("file not found. lets try a new file");
 	Game game = new Game();
+}
 }
 	else{
 	Game game = new Game();
