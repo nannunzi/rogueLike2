@@ -1,7 +1,8 @@
 // Room.java
 // provides code for the drawing of a room
 // also provides starting locations for the player, boxes, and enemies
-
+import java.io.PrintWriter;
+import java.util.Scanner;
 import java.util.ArrayList;
 import ansi_terminal.*;
 
@@ -54,6 +55,20 @@ public class Room {
         };
     }
 
+	public Room(Scanner s){
+	rows=30;
+	cols = 60;
+
+	grid = new String[] {
+	s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine(), s.nextLine()
+};
+}
+	public void save(PrintWriter w){
+		for (int i = 0; i<grid.length; i++){
+		w.println(this.grid[i]);		
+}
+	}
+
     // returns the player's strting location in this room
     public Position getPlayerStart() {
         for (int row = 0; row < rows; row++) {
@@ -95,6 +110,18 @@ public class Room {
 
         return enemies;
     }
+public ArrayList<Portal> getPortal() {
+        ArrayList<Portal> port=new ArrayList<Portal>();
+         for (int row = 0; row < rows; row++) {
+             for (int col = 0; col < cols; col++) {
+                 if (grid[row].charAt(col) == '0') {
+                     port.add(new Portal(row, col));
+                 }
+             }
+         }
+ 
+         return port;
+     }
 
     public int getRows() {
         return rows;

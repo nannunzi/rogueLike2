@@ -1,6 +1,6 @@
 // Inventory.java
 // allows for storing some number of items for the player
-
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -197,5 +197,9 @@ public class Inventory {
             return items.get(realIndex);
         }
     }
+	public void save(PrintWriter w)
+{
+	
+}
 }
 
