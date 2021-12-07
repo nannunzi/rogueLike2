@@ -1,10 +1,19 @@
 // this class contains a static method for creating enemies randomly
 import java.util.Random;
+/**
+This class generates a new Enemy that will be printed out to the screen
+@author NickDanZack
+*/
 public class EnemyGenerator{
 
 	private static String[] descriptor =new String[]{"Poor","Old","Mystic","Repulsive","Dazzling","Twisted","Elder","Sluggish","Stinky","Weird"};
 	private static EnemyType[] types = new EnemyType[]{EnemyType.Bruiser, EnemyType.Thief, EnemyType.Undead};
-
+/**
+This method generates a new Enemy character with semi-random names, descriptors, and types.
+@param row the row where the Enemy will be placed on the map
+@param col the column where the Enemy will be placed on the map
+@return the generated enemy with a name, location on the map, hp, damage, and protection
+*/
 	public static Enemy generate(int row, int col){
 		int hp=0;
 		int dam=0;

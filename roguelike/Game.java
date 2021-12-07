@@ -102,8 +102,8 @@ public class Game {
             setStatus("No portal here");
             Terminal.pause(1.25);
         } else {
+		Terminal.cookedMode();
              	int whoop=0;
-		Terminal.cookedMode(); 
 		Scanner useless=new Scanner(System.in);
 		while(!(whoop==1||whoop==2||whoop==3))
 		{
@@ -122,7 +122,7 @@ public class Game {
 			}
 		
                 }
-		Terminal.rawMode();  
+		Terminal.rawMode();
             Terminal.pause(1.25);
         }   
     }
