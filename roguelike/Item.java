@@ -28,8 +28,9 @@ public class Item {
         this.strength = strength;
     }
 	public Item(Scanner s){
+		Scanner s= new Scanner(System.in);
 		String see = s.nextLine();
-		if see.equals("w"){
+		if (see.equals("w")){
 			type = ItemType.Weapon;
 			}
 		else if (see.equals("a")){

@@ -28,7 +28,7 @@ public class Game {
     public Game(String sav)throws FileNotFoundException{
 		Scanner read = new Scanner(new FileReader(sav));
 		world = new World(read);
-		player = new player 	
+		player = new Player(world.getCurrentRoom().getPlayerStart());
     }
 
     // prints a help menu to the left of the map

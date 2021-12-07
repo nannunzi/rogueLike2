@@ -23,9 +23,9 @@ public class Player extends Character {
         items.addAndEquip(new Item(ItemType.Armor, "Embered Garb", 15, 40, 6));
     }
 	public Player(Position start, Scanner s){
-	super(start.getRow(), start.getcol(), '@', Color.CYAN, 50);
+	super(start.getRow(), start.getCol(), '@', Color.CYAN, 50);
 	this.name=s.nextLine();
-	super.setHealth(Integer.parseInt(s.nextLine()))
+	super.setHealth(Integer.parseInt(s.nextLine()));
 	this.items=new Inventory(s);
 }
     @Override
