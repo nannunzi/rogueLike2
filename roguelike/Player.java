@@ -1,14 +1,19 @@
 // Player.java
 
 import ansi_terminal.*;
+import java.util.Scanner;
 
 public class Player extends Character {
     private Inventory items;
-
+    private String name;
     public Player(Position start) {
         // our starting details
-        super(start.getRow(), start.getCol(), '@', Color.CYAN, 50);
-
+	 super(start.getRow(), start.getCol(), '@', Color.CYAN, 50);
+	 System.out.println("I see you are new here, what is your name?");
+ 	 Scanner literallyjustthis= new Scanner(System.in);
+         String namae = literallyjustthis.nextLine();
+	this.name = namae;
+         literallyjustthis.close();
         // we can carry 100 pounds of items
         items = new Inventory(100);
 
@@ -31,7 +36,7 @@ public class Player extends Character {
 
     @Override
     public String getName() {
-        return "Player";
+        return this.name;
     }
 
     @Override

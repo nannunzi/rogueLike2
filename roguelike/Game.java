@@ -3,6 +3,7 @@
 import java.util.Scanner;
 import java.io.IOException;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -14,15 +15,16 @@ public class Game {
     private ArrayList<Box> boxes;
     private ArrayList<Enemy> enemies;
 
+
     public Game() {
         world  = new World();
-        player = new Player(room.getPlayerStart());
-        boxes = world.getCurrentRoom.getBoxes();
-        enemies = world.getCurrentRoom.getEnemies();
+	player = new Player(world.getCurrentRoom().getPlayerStart());
+        boxes = world.getCurrentRoom().getBoxes();
+        enemies = world.getCurrentRoom().getEnemies();
     }
     public Game(String sav)throws FileNotFoundException{
 		Scanner read = new Scanner(new FileReader(sav));
-		
+				
     }
 
     // prints a help menu to the left of the map
@@ -39,7 +41,7 @@ public class Game {
         };
         Terminal.setForeground(Color.GREEN);
         for (int row = 0; row < cmds.length; row++) {
-            Terminal.warpCursor(row + 1, room.getCols());
+            Terminal.warpCursor(row + 1, world.getCurrentRoom().getCols());
             System.out.print(cmds[row]);
         }
         Terminal.reset();
@@ -48,13 +50,13 @@ public class Game {
     // right under the map we keep a line for status messages
     private void setStatus(String mesg) {
         // clear anything old first
-        Terminal.warpCursor(room.getRows(), 0);
+        Terminal.warpCursor(world.getCurrentRoom().getRows(), 0);
         for (int i = 0; i < 100; i++) {
             System.out.print(" ");
         }
 
         // then print the message
-        Terminal.warpCursor(room.getRows(), 0);
+        Terminal.warpCursor(world.getCurrentRoom().getRows(), 0);
         System.out.print(mesg);
     }
 
@@ -88,6 +90,9 @@ public class Game {
             Terminal.pause(1.25);
         }
     }
+	public void save()throws IOException{
+	PrintWriter p = new PrintWriter(new FileWriter(this.player.getName()+".sav"));
+}
 
     // handle the key which was read - return false if we quit the game
     private boolean handleKey(Key key) {
@@ -114,15 +119,21 @@ public class Game {
                 player.getInventory().equipArmor();
                 redrawMapAndHelp();
                 break;
+	    
+	    case s:
+		try{ 
+		save();}catch(IOException e){
+		System.out.println("couldnt save. looks like youre on your own.");}
+		break;
 
             // handle movement
-            case LEFT: player.move(0, -1, room);
+            case LEFT: player.move(0, -1, world.getCurrentRoom());
                 break;
-            case RIGHT: player.move(0, 1, room);
+            case RIGHT: player.move(0, 1, world.getCurrentRoom());
                 break;
-            case UP: player.move(-1, 0, room);
+            case UP: player.move(-1, 0, world.getCurrentRoom());
                 break;
-            case DOWN: player.move(1, 0, room);
+            case DOWN: player.move(1, 0, world.getCurrentRoom());
                 break;
 
             // and finally the quit command
@@ -136,7 +147,7 @@ public class Game {
     // this is called when we need to redraw the room and help menu
     // this happens after going into a menu like for choosing items
     private void redrawMapAndHelp() {
-        room.draw();
+        world.getCurrentRoom().draw();
         showHelp();
     }
 
@@ -168,7 +179,7 @@ public class Game {
         // now do the battle
         if (opponent != null) {
             opponent.setBattleActive();
-            return player.fight(opponent, room, enemies);
+            return player.fight(opponent, world.getCurrentRoom(), enemies);
         }
 
         return true;
@@ -190,7 +201,7 @@ public class Game {
             player.draw();
 
             // read a key from the user
-            Terminal.warpCursor(room.getRows() + 1, 0);
+            Terminal.warpCursor(world.getCurrentRoom().getRows() + 1, 0);
             Key key = Terminal.getKey();
             playing = handleKey(key);
 
@@ -199,7 +210,7 @@ public class Game {
 
             // move the enemies
             for (Enemy enemy : enemies) {
-                enemy.walk(room);
+                enemy.walk(world.getCurrentRoom());
             }
 
             // check for battles
