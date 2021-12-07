@@ -14,13 +14,14 @@ public class Game {
     private Player player;
     private ArrayList<Box> boxes;
     private ArrayList<Enemy> enemies;
-
+    private ArrayList<Portal> portal;
 
     public Game() {
         world  = new World();
 	player = new Player(world.getCurrentRoom().getPlayerStart());
         boxes = world.getCurrentRoom().getBoxes();
         enemies = world.getCurrentRoom().getEnemies();
+	portal= world.getCurrentRoom().getPortal();
     }
     public Game(String sav)throws FileNotFoundException{
 		Scanner read = new Scanner(new FileReader(sav));
@@ -33,10 +34,12 @@ public class Game {
                          "---------",
                          "Move: Arrow Keys",
                          "Pickup an item: p",
+			 "Enter portal: f",
                          "Drop an item: d",
                          "List items: l",
                          "Equip weapon: w",
                          "Equip armor: a",
+			 "Save: s",
                          "Quit: q"
         };
         Terminal.setForeground(Color.GREEN);
@@ -89,6 +92,33 @@ public class Game {
             setStatus("You cannot drop something on an existing item...");
             Terminal.pause(1.25);
         }
+    }
+    private void warp() {
+        Portal thing = checkForPortal();
+        if (thing == null) {
+            setStatus("No portal here");
+            Terminal.pause(1.25);
+        } else {
+             	int whoop=0; 
+		Scanner useless=new Scanner(System.in);
+		while(!(whoop==1||whoop==2||whoop==3))
+		{
+			setStatus("Where do you wish to warp to? Room (1), (2), or (3)? press enter with your choice.");	
+			whoop=useless.nextInt();
+			if (whoop==1||whoop==2||whoop==3){
+			portal.remove(thing);
+			this.world.setCurrentRoom(whoop-1);
+			enemies=world.getCurrentRoom().getEnemies();
+			boxes=world.getCurrentRoom().getBoxes();
+			portal=world.getCurrentRoom().getPortal();
+			redrawMapAndHelp();
+			}
+			else{
+			setStatus("invalid room");
+			}
+                }  
+            Terminal.pause(1.25);
+        }   
     }
 	public void save()throws IOException{
 	PrintWriter p = new PrintWriter(new FileWriter(this.player.getName()+".sav"));
@@ -158,6 +188,17 @@ public class Game {
         for (Box box : boxes) {
             if (playerLocation.equals(box.getPosition())) {
                 return box;
+            }
+        }
+
+        return null;
+    }
+    private Portal checkForPortal() {
+        Position playerLocation = player.getPosition();
+
+        for (Portal p : portal) {
+            if (playerLocation.equals(p.getPosition())) {
+                return p;
             }
         }
 
